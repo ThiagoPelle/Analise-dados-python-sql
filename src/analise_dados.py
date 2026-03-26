@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 
 # carregar dados
-df = pd.read_csv("data/vendas.csv")
+df = pd.read_csv("data/vendas_dataset.csv")
 
 print("Dados carregados:")
 print(df.head())
