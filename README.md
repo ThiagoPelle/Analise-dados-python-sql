@@ -47,17 +47,56 @@ Jupyter Notebook: Análise exploratória e visualização
 
 VS Code: Ambiente de desenvolvimento
 
+## 🔄 Pipeline de Dados
+
+1. Coleta — Leitura do CSV com separador ; via Pandas
+2. Limpeza — Tratamento de tipos, valores nulos e inconsistências
+3. Armazenamento — Inserção no banco SQLite com controle de duplicatas
+4. Análise — Consultas SQL para geração de métricas de negócio
+
+
+## 📦 Dataset
+O dataset contém 750 registros de vendas com as seguintes colunas:
+ColunaTipoDescriçãoidintIdentificador único da vendaprodutostrNome do produto vendidocategoriastrCategoria do produto (Eletrônicos, Móveis, Acessórios)precointPreço unitário do produtoquantidadeintQuantidade vendidadatastrData da venda (dd/mm/yyyy)
+
+## 📈 Principais Análises
+
+Faturamento por produto — Identificação dos produtos mais rentáveis
+Volume de vendas por categoria — Comparativo entre Eletrônicos, Móveis e Acessórios
+Tendência temporal — Evolução das vendas ao longo dos meses
+Ticket médio — Valor médio por transação
+
+## 🚀 Como Executar
+
+Pré-requisitos
+pip install pandas
+
+
+Rodando o pipeline
+ Clone o repositório
+git clone https://github.com/seu-usuario/Analise-dados-python-sql.git
+
+ Entre na pasta do projeto
+cd Analise-dados-python-sql
+
+ Execute o script principal
+python src/main.py 
+
+
+### Explorando os dados
+Abra o Jupyter Notebook para a análise exploratória:
+
+jupyter notebook notebooks/analise.ipynb
 
 
 
+### 👨‍💻 Autor
+Thiago
 
+Desenvolvido como projeto prático de análise de dados com Python e SQL.
 
-
-
-
-
-
-
+### 📄 Licença
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 
 
