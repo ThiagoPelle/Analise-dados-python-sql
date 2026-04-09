@@ -1,10 +1,6 @@
 
-SELECT categoria, SUM(preco * quantidade) AS total_vendas
+SELECT produto, 
+       SUM(quantidade) AS total_vendido,
+       SUM(quantidade * preco) AS faturamento
 FROM vendas
-GROUP BY categoria;
-
-
-SELECT produto, SUM(quantidade) AS total_vendido
-FROM vendas
-GROUP BY produto
-ORDER BY total_vendido DESC;
+GROUP BY produto;
