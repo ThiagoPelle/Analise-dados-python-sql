@@ -1,11 +1,33 @@
+
+import os
 import pandas as pd
 import sqlite3
 
-# carregar dados
-df = pd.read_csv("data/vendas_dataset.csv")
+base_path = os.path.dirname(__file__)
 
-print("Dados carregados:")
-print(df.head())
+data_path = os.path.join(base_path, "..", "data", "vendas_dataset.csv")
+db_path = os.path.join(base_path, "..", "data", "vendas", "banco.db")
+
+df = pd.read_csv(data_path)
+
+conn = sqlite3.connect(db_path)
+import sqlite3
+
+conn = sqlite3.connect('banco.db')
+
+df.to_sql("vendas", conn, if_exists="replace", index=False)
+
+query = """
+SELECT categoria, SUM(preco * quantidade) AS total_vendas
+FROM vendas
+GROUP BY categoria
+"""
+
+resultado = pd.read_sql_query(query, conn)
+
+print(resultado)
+
+
 
 # limpeza de dados
 df = df.dropna()
@@ -24,14 +46,7 @@ df.to_sql("vendas", conn, if_exists="replace", index=False)
 
 print("\nDados enviados para o banco SQL")
 
-# consulta SQL
-query = """
-SELECT categoria, SUM(total) as total_vendas
-FROM vendas
-GROUP BY categoria
-"""
 
-resultado = pd.read_sql_query(query, conn)
 
 print("\nResumo de vendas:")
 print(resultado)
